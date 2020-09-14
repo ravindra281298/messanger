@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+        <title>chat</title>
+    </head>
+    <body class="bg-gray-900 flex justify-center mb-32">
+        <div class="container">
+
+            <h2 class="">Welcome <%= person.name %></h2>
+            <form class="form-horizontal" action='/chat' method="post">
+                <input type="email" required name='friend' placeholder="Search users email">
+                <button type="submit"  class="btn btn-info">Go</button>
+            </form>
+            <% if(person.friend != undefined && person.friend.name != undefined) { %>
+                <div class="card" name="friendName">Talking to: <b><%= person.friend.name %></b></div>
+                <form class="form-horizontal" action="/chat-app" method="post">
+                    <button class="btn btn-success" type="submit" onclick="">Start Talking</button>
+                </form>
+            <% } %>
+            <% if(person.friend== undefined || person.friend.name == undefined) { %>
+                <div class="card" name="notFound">No one is here.</div>
+            <% } %>
+        </div>
+    </body>
+</html>
